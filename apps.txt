@@ -19,3 +19,4 @@ rclone
 ranger
 rofi
 ufw
+ueberzug
