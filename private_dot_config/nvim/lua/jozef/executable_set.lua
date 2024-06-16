@@ -1,4 +1,5 @@
-vim.cmd("set number")
+vim.cmd("set relativenumber")
+vim.cmd("set clipboard=unnamedplus")
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
