@@ -46,7 +46,7 @@ button:hover {
 }
 
 #workspaces {
-    background-color: #D79CFF;
+    background-color: rgba(253,248,218, 0.2);
     border-radius: 25px;
     margin: 0 4px;
 }
@@ -63,7 +63,7 @@ button:hover {
 }
 
 #workspaces button.active {
-    background-color: #9AA1FF;
+    background-color: #EB8F4E;
     border-radius: 15px;
 }
 
@@ -78,7 +78,7 @@ button:hover {
 }
 
 #clock {
-    background-color:#FF89D8;
+    background-color:#FFE285;
     color: black;
     margin-right: 0px;
     padding-left: 10px;
@@ -87,7 +87,7 @@ button:hover {
     font-weight: bold;
 }
 #tray {
-    background-color: rgba(111, 60, 111, 0.75);
+    background-color: rgba(253,248,218, 0.75);
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 23px;
@@ -105,7 +105,7 @@ button:hover {
 }
 
 #battery {
-    background-color:#6A93FF ;
+    background-color:#E87D31;
     padding-left: 10px;
     margin-left: 0;
     padding-right: 10px;
@@ -141,7 +141,7 @@ label:focus {
 
 
 #network {
-    background-color: #FF81D6;
+    background-color: #A44332;
     border-radius: 20px;
     padding: 5px;
 }
