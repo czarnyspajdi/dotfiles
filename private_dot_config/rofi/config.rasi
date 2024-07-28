@@ -179,4 +179,16 @@ configuration {
 	me-accept-custom: "Control+MouseDPrimary";
 */
 }
-@theme "/home/szymon/.local/share/rofi/themes/rounded-purple-dark.rasi"
+configuration {
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
+
+@theme "~/.config/rofi/gruvbox-material.rasi"
+//@theme "/home/szymon/.local/share/rofi/themes/rounded-purple-dark.rasi"
+
+//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
