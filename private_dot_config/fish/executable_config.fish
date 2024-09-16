@@ -5,6 +5,7 @@ if status is-interactive
     export EDITOR=nvim
     export VISUAL=nvim
     gh auth setup-git
+    zoxide init fish | source
     eval "$(atuin init fish)"
     echo ""
 end
