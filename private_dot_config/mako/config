@@ -1,0 +1,18 @@
+# notify sound
+on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/dialog-information.oga
+
+# font
+font=monospace
+
+# colors
+background-color=#3d3939
+
+# position
+margin=20
+padding=15
+
+# border
+border-size=2
+border-color=#da7015
+border-radius=25
+
