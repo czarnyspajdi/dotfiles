@@ -1,0 +1,15 @@
+#tray {
+    background-color: transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 23px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}

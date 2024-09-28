@@ -1,0 +1,9 @@
+#network {
+    background-color: #A44332;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}

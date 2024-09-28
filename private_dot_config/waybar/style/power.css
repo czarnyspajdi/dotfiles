@@ -1,0 +1,7 @@
+#custom-power {
+  padding: 10px;
+}
+
+#custom-power:hover {
+  color: red;
+}

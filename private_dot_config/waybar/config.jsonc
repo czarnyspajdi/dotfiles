@@ -3,7 +3,7 @@
     "spacing": 0,
     "modules-left": ["clock","battery"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio","backlight", "network", "tray", "custom/notifications"],
+    "modules-right": ["pulseaudio","backlight", "network", "tray", "custom/notifications", "custom/power"],
     
     "hyprland/workspaces": {
       "disable-scroll": true,
@@ -70,6 +70,18 @@
     },
     "custom/notifications": {
       "format": "",
-      "on-click": "makoctl list"
+      "on-click": "~/.config/waybar/scripts/showNotifications.sh"
+  },
+  "custom/power": {
+  "format" : "⏻ ",
+    "tooltip" : false,
+    "menu" : "on-click",
+    "menu-file" : "~/.config/waybar/scripts/powerMenu.xml",
+    "menu-actions" : {
+      "shutdown" : "shutdown",
+      "reboot" : "reboot",
+      "suspend" : "systemctl suspend",
+      "lock" : "hyprlock"
+    }
   }
 }

@@ -1,0 +1,9 @@
+#pulseaudio {
+    margin-right: 10px;
+}
+
+#pulseaudio.muted {
+    border-radius: 20px;
+    padding: 5px;
+    color: #2a5c45;
+}
