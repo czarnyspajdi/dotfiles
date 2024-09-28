@@ -1,0 +1,75 @@
+{
+    "layer": "top", 
+    "spacing": 0,
+    "modules-left": ["clock","battery"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio","backlight", "network", "tray", "custom/notifications"],
+    
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "all-outputs": true,
+      "warp-on-scroll": false,
+      "format": "{name}: {icon}",
+      "icon-map": "~/.config/waybar/scripts/workspaceIcon.sh"
+  },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%H:%M} ",
+        "timezone": "Europe/Warsaw",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}", // Pokazuje samą ikonkę normalnie
+        "format-low": "{capacity}% {icon}", // Pokazuje % jeśli poniżej 20%
+        "low-threshold": 20, // Próg dla 'low'
+        "tooltip-format": "{capacity}%", // Tooltip pokazujący procenty przy najechaniu
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "custom/notifications": {
+      "format": "",
+      "on-click": "makoctl list"
+  }
+}
