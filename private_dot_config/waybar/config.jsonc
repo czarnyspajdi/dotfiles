@@ -1,87 +1,119 @@
 {
-    "layer": "top", 
-    "spacing": 0,
-    "modules-left": ["clock","battery"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio","backlight", "network", "tray", "custom/notifications", "custom/power"],
-    
-    "hyprland/workspaces": {
-      "disable-scroll": true,
-      "all-outputs": true,
-      "warp-on-scroll": false,
-      "format": "{name}: {icon}",
-      "icon-map": "~/.config/waybar/scripts/workspaceIcon.sh"
+  "layer": "top",
+  "spacing": 0,
+  "modules-left": [
+    "clock",
+    "battery"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "backlight",
+    "network",
+    "tray",
+    "custom/notifications",
+    "custom/power"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{id} - {icon}",
+    "format-icons": {
+      "1": "\uf392",
+      "2": " ",
+      "3": "\uf1b6 ",
+      "4": "\uf121 ",
+      "5": "\uf120 ",
+      "9": "\uf1bc "
+    }
   },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%H:%M} ",
+    "timezone": "Europe/Warsaw",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d-%m-%Y}"
+  },
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
-    "clock": {
-        "format": "{:%H:%M} ",
-        "timezone": "Europe/Warsaw",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%Y}"
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
     },
-    "network": {
-        "format-wifi": "",
-        "format-ethernet": "",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}", // Pokazuje samą ikonkę normalnie
-        "format-low": "{capacity}% {icon}", // Pokazuje % jeśli poniżej 20%
-        "low-threshold": 20, // Próg dla 'low'
-        "tooltip-format": "{capacity}%", // Tooltip pokazujący procenty przy najechaniu
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
-    },
-    "custom/notifications": {
-      "format": "",
-      "on-click": "~/.config/waybar/scripts/showNotifications.sh"
+    "format": "{icon}", // Pokazuje samą ikonkę normalnie
+    "format-time": "{H} h {M} m",
+    "format-low": "{capacity}% {icon}", // Pokazuje % jeśli poniżej 20%
+    "low-threshold": 20, // Próg dla 'low'
+    "tooltip-format": "{capacity}%", // Tooltip pokazujący procenty przy najechaniu
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "",
+      ""
+    ]
+  },
+  "custom/notifications": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/showNotifications.sh"
   },
   "custom/power": {
-  "format" : "⏻ ",
-    "tooltip" : false,
-    "menu" : "on-click",
-    "menu-file" : "~/.config/waybar/scripts/powerMenu.xml",
-    "menu-actions" : {
-      "shutdown" : "shutdown",
-      "reboot" : "reboot",
-      "suspend" : "systemctl suspend",
-      "lock" : "hyprlock"
+    "format": "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/scripts/powerMenu.xml",
+    "menu-actions": {
+      "shutdown": "systemctl poweroff",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "lock": "hyprlock"
     }
   }
 }
