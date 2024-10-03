@@ -4,6 +4,9 @@
 @import url("./style/battery.css");
 @import url("./style/audio.css");
 @import url("./style/tray.css");
+@import url("./style/backlight.css");
+@import url("./style/menu.css");
+@import url("./style/spotify.css");
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -14,10 +17,11 @@
 }
 
 window#waybar {
-    background-color: transparent;
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: rgba(25, 25, 25, 0.85); /* Lekko przezroczysty czarny */
+    opacity: 0.9; /* lekka przezroczystość */
+    color: #f0f0f0; /* Jasna czcionka dla kontrastu */
+    border-radius: 15px; /* Zaokrąglone rogi */
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
 window#waybar.hidden {
@@ -45,7 +49,7 @@ button {
     box-shadow: inset 0 -3px transparent;
     /* Avoid rounded borders under each button name */
     border: none;
-    border-radius: 0;
+    border-radius: 25px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -59,28 +63,42 @@ button:hover {
     border-bottom: 3px solid #ffffff;
 }
 
+
 #clock {
-    background-color:#FFE285;
-    color: black;
-    margin-right: 0px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 25px 0 0 25px;
-    font-weight: bold;
+    margin-left: 10px; /* Margines */
+    font-weight: bold; /* Gruba czcionka */
+    font-size: 18px; /* Większy rozmiar czcionki */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień pod elementem */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Przezroczysta ramka */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Płynne przejścia */
+}
+
+#clock:hover {
+    background-color: rgba(253, 248, 218, 0.5); /* Jaśniejsze tło przy najechaniu */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Większy cień przy najechaniu */
 }
 
 label:focus {
     background-color: #000000;
 }
 
-#backlight {
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 5px;
-    border-radius: 25px;
-}
-
 #custom-notifications {
   padding: 10px;
 }
 
+#custom-notifications:hover {
+  color: lightblue;
+  padding: 10px;
+}
+
+#clock, #battery {
+    background-color: rgba(30, 30, 30, 0.7); /* Przyciemnione tło */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Jasna ramka */
+    color: #f0f0f0;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+#clock:hover, #battery:hover {
+    background-color: rgba(255, 87, 34, 0.3); /* Subtelny pomarańczowy na hoverze */
+}

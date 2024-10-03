@@ -27,6 +27,7 @@
       "3": "\uf1b6 ",
       "4": "\uf121 ",
       "5": "\uf120 ",
+      "6": " ",
       "9": "\uf1bc "
     }
   },
@@ -41,10 +42,10 @@
     "format-alt": "{:%d-%m-%Y}"
   },
   "network": {
-    "format-wifi": "",
-    "format-ethernet": "",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "tooltip-format": "{ifname} via {gwaddr}  ",
+    "format-linked": "{ifname} (No IP)  ",
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
@@ -85,24 +86,26 @@
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
     ]
   },
   "backlight": {
     "device": "intel_backlight",
     "format": "{percent}% {icon}",
     "format-icons": [
-      "",
-      ""
+      " ",
+      " "
     ]
   },
   "custom/notifications": {
-    "format": "",
-    "on-click": "~/.config/waybar/scripts/showNotifications.sh"
+    "format": " ",
+    "on-click": "~/.config/waybar/scripts/showNotifications.sh",
+    "on-click-right": "~/.config/waybar/scripts/makoTurn.sh",
+    "interval": 10
   },
   "custom/power": {
     "format": "⏻ ",

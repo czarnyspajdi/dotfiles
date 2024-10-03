@@ -1,0 +1,19 @@
+menu {
+    border-radius: 10px; /* zaokrąglone rogi */
+    background: rgba(30, 30, 30, 0.95); /* lekko przezroczyste tło */
+    color: #B5E8E0; /* kolor tekstu */
+    padding: 10px; /* odstęp wewnętrzny */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* cień */
+}
+
+/* Stylizacja elementów w menu */
+menuitem {
+    border-radius: 5px; /* zaokrąglone rogi */
+    padding: 5px 10px; /* odstęp wewnętrzny */
+}
+
+/* Efekt hover dla elementów w menu */
+menuitem:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* delikatne tło przy najechaniu */
+    color: #ffffff; /* zmiana koloru tekstu */
+}

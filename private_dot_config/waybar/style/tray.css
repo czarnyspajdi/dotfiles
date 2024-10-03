@@ -1,15 +1,22 @@
 #tray {
-    background-color: transparent;
-    padding-left: 10px;
+    background-color: rgba(253, 248, 218, 0.2); /* Przezroczyste tło */
+    padding-left: 10px; 
     padding-right: 10px;
-    border-radius: 23px;
+    border-radius: 24px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Płynne przejścia */
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+    -gtk-icon-effect: dim; /* Efekt przyciemnienia */
+    opacity: 0.6; /* Zmniejszona przezroczystość */
+    transition: opacity 0.3s ease; /* Płynne przejście przy zmianie przezroczystości */
 }
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #eb4d4b; /* Czerwone tło dla powiadomienia */
+    border-radius: 50%; /* Okrągłe ikony */
+    box-shadow: 0 4px 8px rgba(235, 77, 75, 0.5); /* Cień */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Płynne przejścia */
 }

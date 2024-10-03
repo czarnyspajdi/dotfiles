@@ -1,37 +1,41 @@
 {
-    "$schema": "file:///C:/msys64/home/zhang/fastfetch/doc/json_schema.json",
-    "logo": {
-        "type": "small"
+  "$schema": "file:///C:/msys64/home/zhang/fastfetch/doc/json_schema.json",
+  "logo": {
+    "type": "small"
+  },
+  "display": {
+    "separator": "\u001b[31m->   "
+  },
+  "modules": [
+    {
+      "key": "Distro      ",
+      "type": "os"
     },
-    "display": {
-        "separator": "\u001b[31m->   "
+    {
+      "key": "Kernel      ",
+      "type": "kernel"
     },
-    "modules": [
-        {
-            "key": "Distro      ",
-            "type": "os"
-        },
-        {
-            "key": "Kernel      ",
-            "type": "kernel"
-        },
-        {
-            "key": "Shell       ",
-            "type": "shell"
-        },
-        {
-            "key": "Terminal    ",
-            "type": "terminal"
-        },
-        {
-            "key": "Memory      ",
-            "type": "memory"
-        },
-        "break",
-        {
-            "type": "colors",
-            "paddingLeft": 6,
-            "symbol": "circle"
-        }
-    ]
+    {
+      "key": "Shell       ",
+      "type": "shell"
+    },
+    {
+      "key": "Terminal    ",
+      "type": "terminal"
+    },
+    {
+      "key": "Memory      ",
+      "type": "memory"
+    },
+    {
+      "key": "Packages    ",
+      "type": "Packages"
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 6,
+      "symbol": "circle"
+    }
+  ]
 }
