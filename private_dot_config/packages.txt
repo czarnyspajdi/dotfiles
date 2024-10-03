@@ -88,3 +88,4 @@ xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
 zip
 zoxide
+hypridle
