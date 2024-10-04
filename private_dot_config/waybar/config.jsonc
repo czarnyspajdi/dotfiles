@@ -3,7 +3,8 @@
   "spacing": 0,
   "modules-left": [
     "clock",
-    "battery"
+    "battery",
+    "custom/spotify"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -118,5 +119,15 @@
       "suspend": "systemctl suspend",
       "lock": "hyprlock"
     }
+  },
+  "custom/spotify": {
+    "exec": "~/.config/waybar/scripts/spotify.sh",
+    "format": "{}  ",
+    "return-type": "text",
+    "on-click": "playerctl play-pause --player spotify",
+    "on-click-right": "killall spotify",
+    "on-scroll-up": "playerctl next --player spotify",
+    "on-scroll-down": "playerctl previous --player spotify",
+    "restart-interval": "0"
   }
 }

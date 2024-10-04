@@ -9,8 +9,13 @@ if [ -z "$NOTIFICATIONS" ]; then
   exit 0
 fi
 
-# Parsuj historię powiadomień i wyciągnij tytuły oraz treści
-NOTIFICATIONS=$(echo "$NOTIFICATIONS" | jq -r '.data[0][] | "🔔 " + (.summary.data // "Brak tytułu") + ": " + (.body.data // "Brak treści")')
+# Parsuj historię powiadomień i wyciągnij ikonę, tytuły oraz treści
+NOTIFICATIONS=$(echo "$NOTIFICATIONS" | jq -r '
+  .data[0][] | 
+  (.["app-icon"].data // "🔔") + " " + 
+  (.summary.data // "Brak tytułu") + ": " + 
+  (.body.data // "Brak treści")
+')
 
 # Sprawdź, czy jq poprawnie wyciągnął dane
 if [ -z "$NOTIFICATIONS" ]; then

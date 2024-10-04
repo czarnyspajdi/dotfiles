@@ -1,18 +1,26 @@
-# notify sound
+# Mako Configuration File
+
+# Notification sound
 on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/dialog-information.oga
 
-# font
+# Font settings
 font=monospace
 
-# colors
-background-color=#3d3939
+# Colors
+background-color=#2C2C2C
+border-color=#da7015
 
-# position
-margin=20
+# Position and padding
+margin=15
 padding=15
 
-# border
+# Border settings
 border-size=2
-border-color=#da7015
-border-radius=25
+border-radius=20
 
+# size
+width=400
+height=400
+
+# Timeout settings
+default-timeout=8000
