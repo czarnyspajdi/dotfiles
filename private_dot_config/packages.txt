@@ -89,3 +89,7 @@ xdg-desktop-portal-wlr
 zip
 zoxide
 hypridle
+croc
+zathura-pdf-poppler
+zathura
+vesktop
