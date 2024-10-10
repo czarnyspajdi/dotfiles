@@ -93,3 +93,4 @@ croc
 zathura-pdf-poppler
 zathura
 vesktop
+brave-bin
