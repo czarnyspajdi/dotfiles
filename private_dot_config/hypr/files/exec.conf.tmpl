@@ -23,9 +23,9 @@ exec-once = hyprpaper
 exec-once = waybar
 
 # user apps
-{{ if eq .chezmoi.hostname pitagoras-lin}}
+{{- if eq .chezmoi.hostname "pitagoras-lin"}}
 exec-once = vesktop
-{{ end }}
+{{- end }}
 exec-once = kdeconnectd
 exec-once = brave
 
