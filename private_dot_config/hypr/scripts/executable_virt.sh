@@ -1,8 +1,8 @@
 ISO_PATH="$HOME/.qemu/windows10.iso"
 DISK_PATH="$HOME/.qemu/windows10.qcow2"
 DISK_SIZE="60G"
-MEMORY="4G"
-CPU="2"
+MEMORY="6G"
+CPU="4"
 
 # Sprawdzenie, czy VM o nazwie windows10 już istnieje
 if [ -f "$DISK_PATH" ]; then
