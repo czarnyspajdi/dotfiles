@@ -14,9 +14,8 @@ if [ -f "$DISK_PATH" ]; then
     -m "$MEMORY" \
     -smp "$CPU" \
     -hda "$DISK_PATH" \
-    -cdrom "$ISO_PATH" \
     -device virtio-net,netdev=net0 \
-    -netdev user,id=net0 \
+    -netdev user,id=net0,hostfwd=tcp::2222-:22 \
     -vga virtio \
     -boot order=c \
     -enable-kvm \
