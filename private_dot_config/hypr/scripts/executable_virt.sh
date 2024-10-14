@@ -3,8 +3,8 @@
 ISO_PATH="$HOME/.qemu/windows10.iso"
 DISK_PATH="$HOME/.qemu/windows10.qcow2"
 DISK_SIZE="60G"
-MEMORY="6G"
-CPU="4"
+MEMORY="12G"
+CPU="6"
 VM_NAME="windows10"
 
 # Funkcja do wyłączania wszystkich uruchomionych maszyn wirtualnych
