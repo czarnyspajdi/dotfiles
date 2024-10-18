@@ -8,8 +8,8 @@ cpu_threads=$((cpu_cores * threads_per_core))
 
 ram=$(lsmem --json | jq -r '.memory[] | .size' | sed 's/,/./g' | sed 's/G//' | awk '{s+=$1} END {print s}')
 
-half_cpu_threads=$(echo "($cpu_threads + 1) / 2" | bc)
-half_ram=$(echo "($ram + 1) / 2" | bc)
+half_cpu_threads=$(echo "(($cpu_threads + 1) / 2) / 1" | bc)
+half_ram=$(echo "(($ram + 1) / 2) / 1" | bc)
 
 echo "Total number of CPU threads: $cpu_threads"
 echo "Half of the CPU threads: $half_cpu_threads"
