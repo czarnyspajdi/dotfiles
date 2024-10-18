@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LANG=pl_PL.UTF-8
+
 cpu_cores=$(lscpu --json | jq -r '.lscpu[] | select(.field == "CPU:") | .data')
 threads_per_core=$(lscpu --json | jq -r '.lscpu[] | select(.field == "Wątków na rdzeń:") | .data')
 cpu_threads=$((cpu_cores * threads_per_core))
