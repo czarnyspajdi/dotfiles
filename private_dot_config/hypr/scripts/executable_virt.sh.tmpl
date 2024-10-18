@@ -10,6 +10,7 @@ VM_NAME="windows10"
 # Funkcja do wyłączania wszystkich uruchomionych maszyn wirtualnych
 shutdown_vms() {
   echo "Wyłączam wszystkie uruchomione maszyny wirtualne..."
+  notify-send "Maszyna wirtualna" "Wyłączam…"
   # Znajdowanie i zabijanie wszystkich procesów qemu-system-x86_64
   pgrep -f qemu-system-x86_64 | xargs -r kill
   exit 0 # Kończymy działanie skryptu
@@ -25,6 +26,7 @@ if [ -f "$DISK_PATH" ]; then
   echo "Maszyna wirtualna $VM_NAME już istnieje. Uruchamiam..."
 
   # Uruchamianie istniejącej maszyny
+  notify-send "Maszyna wirtualna" "Uruchamianie…"
   qemu-system-x86_64 \
     -name "$VM_NAME" \
     -m "$MEMORY" \
@@ -41,6 +43,7 @@ if [ -f "$DISK_PATH" ]; then
 
 else
   echo "Maszyna wirtualna $VM_NAME nie istnieje. Tworzę nową..."
+  notify-send "Maszyna wirtualna nie istnieje" "Tworzenie nowej…"
 
   # Tworzenie katalogu na dysk i ISO
   mkdir -p "$HOME/.qemu"
@@ -48,6 +51,7 @@ else
   # Sprawdzenie, czy ISO istnieje
   if [ ! -f "$ISO_PATH" ]; then
     echo "Brak pliku ISO. Otwieram stronę do pobrania Windows 10 w przeglądarce."
+    notify-send "Maszyna wirtualna" "Proszę pobrać plik iso i zapisać go jako ~/.qemu/windows10.iso"
     xdg-open "https://www.microsoft.com/pl-pl/software-download/windows10" # Otwiera stronę pobierania
     exit 1                                                                 # Kończymy działanie skryptu, gdy ISO nie istnieje
   else
