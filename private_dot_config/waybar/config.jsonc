@@ -1,21 +1,15 @@
 {
   "layer": "top",
   "spacing": 0,
-  "modules-left": [
-    "clock",
-    "battery",
-    "custom/spotify"
-  ],
-  "modules-center": [
-    "hyprland/workspaces"
-  ],
+  "modules-left": ["clock", "battery", "custom/spotify"],
+  "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "pulseaudio",
     "backlight",
     "network",
     "tray",
     "custom/notifications",
-    "custom/power"
+    "custom/power",
   ],
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -31,18 +25,19 @@
       "6": " ",
       "9": "\uf1bc ",
       "10": " ",
-      "11": " "
-    }
+      "11": " ",
+      "19": " ",
+    },
   },
   "tray": {
     "icon-size": 21,
-    "spacing": 10
+    "spacing": 10,
   },
   "clock": {
     "format": "{:%H:%M} ",
     "timezone": "Europe/Warsaw",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%d-%m-%Y}"
+    "format-alt": "{:%d-%m-%Y}",
   },
   "network": {
     "format-wifi": " ",
@@ -50,7 +45,7 @@
     "tooltip-format": "{ifname} via {gwaddr}  ",
     "format-linked": "{ifname} (No IP)  ",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -64,21 +59,17 @@
       "headset": " ",
       "phone": " ",
       "portable": " ",
-      "default": [
-        "",
-        " ",
-        " "
-      ]
+      "default": ["", " ", " "],
     },
     "on-click": "pavucontrol -t 3",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
   },
   "battery": {
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{icon}", // Pokazuje samą ikonkę normalnie
     "format-time": "{H} h {M} m",
@@ -88,28 +79,19 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ]
+    "format-icons": [" ", " ", " ", " ", " "],
   },
   "backlight": {
     "device": "intel_backlight",
     "format": "{percent}% {icon}",
-    "format-icons": [
-      " ",
-      " "
-    ]
+    "format-icons": [" ", " "],
   },
   "custom/notifications": {
     "format": " ",
     "on-click": "~/.config/waybar/scripts/showNotifications.sh",
     "on-click-right": "~/.config/waybar/scripts/makoTurn.sh",
     "return-type": "text",
-    "interval": 10
+    "interval": 10,
   },
   "custom/power": {
     "format": "⏻ ",
@@ -120,8 +102,8 @@
       "shutdown": "systemctl poweroff",
       "reboot": "reboot",
       "suspend": "systemctl suspend",
-      "lock": "hyprlock"
-    }
+      "lock": "hyprlock",
+    },
   },
   "custom/spotify": {
     "exec": "~/.config/waybar/scripts/spotify.sh",
@@ -131,6 +113,6 @@
     "on-click-right": "killall spotify",
     "on-scroll-up": "playerctl next --player spotify",
     "on-scroll-down": "playerctl previous --player spotify",
-    "restart-interval": "0"
-  }
+    "restart-interval": "0",
+  },
 }
