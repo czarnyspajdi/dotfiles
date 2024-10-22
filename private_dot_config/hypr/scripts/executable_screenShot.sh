@@ -87,4 +87,6 @@ elif [ "$copy" = true ]; then
   notify-send -i "$tmp_path" "Screenshot" "Copied screenshot"
 fi
 
+rm $tmp_path
+
 exit 0
