@@ -43,13 +43,11 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-# Sprawdzanie, czy podano typ zrzutu ekranu
 if [[ -z $type_of_screenshot ]]; then
   echo "$error_message"
   exit 1
 fi
 
-# Wykonywanie zrzutu ekranu na podstawie podanego typu
 case "$type_of_screenshot" in
 fullscreen)
   grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') "$tmp_path"
@@ -75,14 +73,12 @@ region)
   ;;
 esac
 
-# Edytowanie, zapisywanie lub kopiowanie zrzutu
 if [ "$copy" = true ] && [ "$save" = true ]; then
   cp "$tmp_path" "$full_path"
   wl-copy <"$tmp_path"
   notify-send -i "$tmp_path" "Screenshot" "Copied and saved to $full_path"
 elif [ "$edit" = true ]; then
   swappy -f "$tmp_path"
-  notify-send -i "$tmp_path" "Screenshot" "Editing screenshot..."
 elif [ "$save" = true ]; then
   cp "$tmp_path" "$full_path"
   notify-send -i "$tmp_path" "Screenshot" "Saved screenshot to $full_path"
