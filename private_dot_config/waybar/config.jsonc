@@ -66,11 +66,11 @@
       "portable": " ",
       "default": [
         "",
-        "",
-        ""
+        " ",
+        " "
       ]
     },
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol -t 3",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
   },
