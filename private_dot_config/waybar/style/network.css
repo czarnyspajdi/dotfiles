@@ -1,27 +1,40 @@
 #network {
-    background-color: rgba(255, 87, 34, 0.2); /* Lekki pomarańczowy odcień z przezroczystością */
-    border-radius: 10px;
-    padding: 5px;
-    color: #ffffff; /* Biały kolor ikon i tekstu */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Płynne przejścia */
+  background-color: @color13; /* Lekki pomarańczowy odcień z przezroczystością */
+  border-radius: 10px;
+  padding: 5px;
+  color: #ffffff; /* Biały kolor ikon i tekstu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease; /* Płynne przejścia */
 }
 
 #network.disconnected {
-    background-color: rgba(255, 0, 0, 0.5); /* Mocniejszy odcień czerwonego, gdy brak połączenia */
-    color: #ffffff; /* Kolor czcionki */
-    box-shadow: 0 6px 12px rgba(245, 60, 60, 0.5); /* Cień przy odłączeniu */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Płynne przejścia */
+  background-color: rgba(
+    255,
+    0,
+    0,
+    0.5
+  ); /* Mocniejszy odcień czerwonego, gdy brak połączenia */
+  color: #ffffff; /* Kolor czcionki */
+  box-shadow: 0 6px 12px rgba(245, 60, 60, 0.5); /* Cień przy odłączeniu */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease; /* Płynne przejścia */
 }
 
 #network:hover {
-    background-color: rgba(164, 67, 50, 0.5); /* Jaśniejsze tło po najechaniu */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Większy cień przy hoverze */
+  background-color: @color14; /* Jaśniejsze tło po najechaniu */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Większy cień przy hoverze */
 }
 
 #network.connected {
-    background: linear-gradient(to right, #ff5722, #ff9800); /* Gradient w kolorach ciepłych */
-    border-radius: 20px;
-    padding: 5px;
-    color: #ffffff;
+  background: linear-gradient(
+    to right,
+    #ff5722,
+    #ff9800
+  ); /* Gradient w kolorach ciepłych */
+  border-radius: 20px;
+  padding: 5px;
+  color: #ffffff;
 }

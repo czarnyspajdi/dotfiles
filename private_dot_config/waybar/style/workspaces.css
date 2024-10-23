@@ -1,36 +1,36 @@
 #workspaces {
-    background-color: rgba(253,248,218, 0.2);
-    border-radius: 25px;
-    margin: 0 4px;
+  background-color: rgba(253, 248, 218, 0.2);
+  border-radius: 25px;
+  margin: 0 4px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #workspaces button:hover {
-    border-radius: 25px;
-    background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.active {
-    background-color: #EB8F4E;
-    border-radius: 15px;
+  background-color: @color5;
+  border-radius: 15px;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
-    border-radius: 15px;
+  background-color: @color10;
+  border-radius: 15px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+  margin-right: 0;
 }

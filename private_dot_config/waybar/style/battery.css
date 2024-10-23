@@ -1,38 +1,40 @@
 #battery {
-    background-color: rgba(253, 248, 218, 0.2); /* Jasne tło */
-    padding: 8px; /* Wypełnienie */
-    margin: 2px; /* Marginesy */
-    border-radius: 25px; /* Zaokrąglone rogi */
-    font-size: 18px; /* Rozmiar czcionki */
-    color: #ffffff; /* Biały tekst */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Płynne przejścia */
+  background-color: @color12; /* Jasne tło */
+  padding: 8px; /* Wypełnienie */
+  margin: 2px; /* Marginesy */
+  border-radius: 25px; /* Zaokrąglone rogi */
+  font-size: 18px; /* Rozmiar czcionki */
+  color: #ffffff; /* Biały tekst */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease; /* Płynne przejścia */
 }
 
 #battery.critical:not(.charging) {
-    background-color: #ff4d4d; /* Czerwone tło dla krytycznego poziomu */
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5); /* Intensywniejszy cień */
+  background-color: #ff4d4d; /* Czerwone tło dla krytycznego poziomu */
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5); /* Intensywniejszy cień */
 }
 
 #battery.warning:not(.charging) {
-    background-color: orange; /* Ostrzeżenie - pomarańczowe tło */
-    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5); /* Pomarańczowy cień */
+  background-color: orange; /* Ostrzeżenie - pomarańczowe tło */
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5); /* Pomarańczowy cień */
 }
 
-#battery.charging, #battery.plugged {
-    background-color: #26A65B; /* Zielone tło podczas ładowania */
-    color: #ffffff; /* Biały tekst */
-    box-shadow: 0 4px 8px rgba(38, 166, 91, 0.5); /* Zielony cień */
+#battery.charging,
+#battery.plugged {
+  background-color: #26a65b; /* Zielone tło podczas ładowania */
+  color: #ffffff; /* Biały tekst */
+  box-shadow: 0 4px 8px rgba(38, 166, 91, 0.5); /* Zielony cień */
 }
 
 @keyframes blink {
-    to {
-        background-color: #FF0000;
-        color: #000000;
-    }
+  to {
+    background-color: #ff0000;
+    color: #000000;
+  }
 }

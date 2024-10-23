@@ -1,3 +1,4 @@
+@import url("./style/var.css");
 @import url("./style/power.css");
 @import url("./style/workspaces.css");
 @import url("./style/network.css");
@@ -9,77 +10,80 @@
 @import url("./style/spotify.css");
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    margin: 1px;
-    padding: 1px;
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  margin: 1px;
+  padding: 1px;
+  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
 window#waybar {
-    background-color: rgba(25, 25, 25, 0.85); /* Lekko przezroczysty czarny */
-    opacity: 0.9; /* lekka przezroczystość */
-    color: #f0f0f0; /* Jasna czcionka dla kontrastu */
-    border-radius: 15px; /* Zaokrąglone rogi */
-    transition: background-color 0.3s ease, border-radius 0.3s ease;
+  background-color: @background; /* Lekko przezroczysty czarny */
+  opacity: 0.9; /* lekka przezroczystość */
+  color: @foreground; /* Jasna czcionka dla kontrastu */
+  border-radius: 15px; /* Zaokrąglone rogi */
+  transition:
+    background-color 0.3s ease,
+    border-radius 0.3s ease;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 window#waybar.empty {
-    background-color: transparent;
+  background-color: transparent;
 }
 window#waybar.solo {
-    background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 window#waybar.termite {
-    background-color: #3F3F3F;
+  background-color: #3f3f3f;
 }
 
 window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+  background-color: #000000;
+  border: none;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 25px;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 25px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+  background: inherit;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+  background-color: @color15;
+  border-bottom: 3px solid #ffffff;
 }
 
-
 #clock {
-    margin-left: 10px; /* Margines */
-    font-weight: bold; /* Gruba czcionka */
-    font-size: 18px; /* Większy rozmiar czcionki */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień pod elementem */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Przezroczysta ramka */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Płynne przejścia */
+  margin-left: 10px; /* Margines */
+  font-weight: bold; /* Gruba czcionka */
+  font-size: 18px; /* Większy rozmiar czcionki */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień pod elementem */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Przezroczysta ramka */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease; /* Płynne przejścia */
 }
 
 #clock:hover {
-    background-color: rgba(253, 248, 218, 0.5); /* Jaśniejsze tło przy najechaniu */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Większy cień przy najechaniu */
+  background-color: @color13; /* Jaśniejsze tło przy najechaniu */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Większy cień przy najechaniu */
 }
 
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 #custom-notifications {
@@ -91,14 +95,16 @@ label:focus {
   padding: 10px;
 }
 
-#clock, #battery {
-    background-color: rgba(30, 30, 30, 0.7); /* Przyciemnione tło */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Jasna ramka */
-    color: #f0f0f0;
-    border-radius: 15px;
-    padding: 5px;
+#clock,
+#battery {
+  background-color: @color13; /* Przyciemnione tło */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Jasna ramka */
+  color: #f0f0f0;
+  border-radius: 15px;
+  padding: 5px;
 }
 
-#clock:hover, #battery:hover {
-    background-color: rgba(255, 87, 34, 0.3); /* Subtelny pomarańczowy na hoverze */
+#clock:hover,
+#battery:hover {
+  background-color: @color14;
 }
