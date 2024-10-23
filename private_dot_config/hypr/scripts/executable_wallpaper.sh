@@ -92,7 +92,7 @@ vesktop_config="
   --darkplus-bg2: #302f2f;\n
   --darkplus-sec: $color1;\n
   --darkplus-links: $color2;\n
-  --darkplus-home-icon: url(https://i.imgur.com/V2mA9Ns.png);\n
+  --darkplus-home-icon: url(https://i.imgur.com/btMrRiE.png);\n
   --watermark-filter-invert: 0%;\n
   --watermark-filter-sepia: 50%;\n
   --watermark-filter-saturate: 3000%;\n
