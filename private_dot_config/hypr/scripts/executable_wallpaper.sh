@@ -64,6 +64,55 @@ splash = off\n
 ipc = off
 "
 
+hyprlock_content="
+background {\n
+    monitor =\n
+    path = $choosen_wallpaper\n
+    color = rgba(25, 20, 20, 1.0)\n
+\n
+    # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations\n
+    blur_passes = 0 # 0 disables blurring\n
+    blur_size = 7\n
+    noise = 0.0117\n
+    contrast = 0.8916\n
+    brightness = 0.8172\n
+    vibrancy = 0.1696\n
+    vibrancy_darkness = 0.0\n
+}\n
+\n
+input-field {\n
+    monitor =\n
+    size = 200, 50\n
+    outline_thickness = 3\n
+    dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8\n
+    dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0\n
+    dots_center = false\n
+    dots_rounding = -1 # -1 default circle, -2 follow input-field rounding\n
+    outer_color = rgb(151515)\n
+    inner_color = rgb(200, 200, 200)\n
+    font_color = rgb(10, 10, 10)\n
+    fade_on_empty = true\n
+    fade_timeout = 1000 # Milliseconds before fade_on_empty is triggered.\n
+    placeholder_text = <i>Input Password...</i> # Text rendered in the input box when it's empty.\n
+    hide_input = false\n
+    rounding = -1 # -1 means complete rounding (circle/oval)\n
+    check_color = rgb(204, 136, 34)\n
+    fail_color = rgb(204, 34, 34) # if authentication failed, changes outer_color and fail message color\n
+    fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i> # can be set to empty\n
+    fail_timeout = 2000 # milliseconds before fail_text and fail_color disappears\n
+    fail_transition = 300 # transition time in ms between normal outer_color and fail_color\n
+    capslock_color = -1\n
+    numlock_color = -1\n
+    bothlock_color = -1 # when both locks are active. -1 means don't change outer color (same for above)\n
+    invert_numlock = false # change color if numlock is off\n
+    swap_font_color = false # see below\n
+\n
+    position = 0, -20\n
+    halign = center\n
+    valign = center\n
+}\n
+"
+
 echo -e $hyprpaper_content >$hypr_dir/hyprpaper.conf
 wal -i $choosen_wallpaper
 
@@ -139,6 +188,7 @@ cp "$wal_dir/colors-rofi-light.rasi" "$conf_dir/rofi/colors.rasi"
 echo -e $hyprland_border >"$hypr_dir/files/general.conf"
 echo -e $vesktop_config >"$conf_dir/vesktop/themes/Dark+.theme.css"
 echo -e $mako_config | sed 's/^[[:space:]]*//' >"$conf_dir/mako/config"
+echo -e $hyprlock_content | sed 's/^[[:space:]]*//' >"$hypr_dir/hyprlock.conf"
 
 restart_hyprpaper
 restart_waybar
