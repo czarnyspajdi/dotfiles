@@ -1,6 +1,7 @@
 {
   "layer": "top",
-  "spacing": 0,
+  "spacing": 1,
+  "margin": "2 2 2 2",
   "modules-left": ["clock", "battery", "custom/spotify"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
