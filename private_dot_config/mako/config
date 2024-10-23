@@ -8,7 +8,7 @@ font=monospace
 
 # Colors
 background-color=#2C2C2C
-border-color=#da7015
+border-color=#F6A020
 
 # Position and padding
 margin=15
@@ -24,3 +24,4 @@ height=400
 
 # Timeout settings
 default-timeout=8000
+

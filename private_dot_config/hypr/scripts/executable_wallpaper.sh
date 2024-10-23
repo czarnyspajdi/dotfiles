@@ -102,13 +102,45 @@ vesktop_config="
 }\n
 "
 
+border_color="$(awk 'NR==6' $wal_dir/colors)"
+
+mako_config="
+# Mako Configuration File\n
+\n
+# Notification sound\n
+on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/dialog-information.oga\n
+\n
+# Font settings\n
+font=monospace\n
+\n
+# Colors\n
+background-color=#2C2C2C\n
+border-color=$border_color\n
+\n
+# Position and padding\n
+margin=15\n
+padding=15\n
+\n
+# Border settings\n
+border-size=2\n
+border-radius=20\n
+\n
+# size\n
+width=400\n
+height=400\n
+\n
+# Timeout settings\n
+default-timeout=8000\n
+"
+
 cp "$wal_dir/colors-waybar.css" "$waybar_dir/style/var.css"
 cp "$wal_dir/colors-kitty.conf" "$conf_dir/kitty/colors.conf"
 cp "$wal_dir/colors-rofi-light.rasi" "$conf_dir/rofi/colors.rasi"
 echo -e $hyprland_border >"$hypr_dir/files/general.conf"
 echo -e $vesktop_config >"$conf_dir/vesktop/themes/Dark+.theme.css"
+echo -e $mako_config | sed 's/^[[:space:]]*//' >"$conf_dir/mako/config"
 
 restart_hyprpaper
 restart_waybar
-
+makoctl reload
 hyprctl reload
