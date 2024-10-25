@@ -4,9 +4,9 @@ playerctl -p spotify metadata --format "{{status}} {{artist}} - {{title}}" --fol
   player_status=$(playerctl status --player spotify 2>/dev/null)
 
   if [ "$player_status" = "Playing" ]; then
-    echo "  $(playerctl metadata artist --player spotify) - $(playerctl metadata title --player spotify)"
-  elif [ "$player_status" = "Paused" ]; then
     echo "  $(playerctl metadata artist --player spotify) - $(playerctl metadata title --player spotify)"
+  elif [ "$player_status" = "Paused" ]; then
+    echo "  $(playerctl metadata artist --player spotify) - $(playerctl metadata title --player spotify)"
   else
     echo ""
   fi
