@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir_path="$HOME/Obrazy/zrzuty/"
-file_name="zrzut_$(date +'%H-%M_%d-%m-%Y').png"
+file_name="zrzut_$(date +'%H-%M-%S_%d-%m-%Y').png"
 
 error_message="No argument provided. Use -h or --help for help message."
 help_message="\nUsage: screenShot [flags] [type-of-screen-shot]\n\nFlags:\n\t-c | --copy \t Copies to clipboard\n\t-s | --save \t Saves to $dir_path\n\t-e | --edit \t Edit screenshot with swappy\n\nTypes:\n\tfullscreen\n\twindow\n\tregion\n"
