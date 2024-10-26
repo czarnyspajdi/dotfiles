@@ -16,6 +16,8 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format": "{id} - {icon}",
     "format-icons": {
       "1": "\uf392",
