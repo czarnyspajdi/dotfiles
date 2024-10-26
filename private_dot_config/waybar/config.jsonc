@@ -116,6 +116,7 @@
     "on-scroll-down": "playerctl previous --player spotify",
     "restart-interval": "0",
     "hide-empty-text": true,
+    "justify": "center",
   },
   "custom/browser": {
     "exec": "~/.config/waybar/scripts/mediaplayer.sh brave",
@@ -124,5 +125,6 @@
     "on-click": "playerctl play-pause --player brave",
     "restart-interval": "0",
     "hide-empty-text": true,
+    "justify": "center",
   },
 }
