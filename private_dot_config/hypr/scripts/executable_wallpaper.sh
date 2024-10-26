@@ -98,7 +98,7 @@ input-field {\n
     rounding = -1 # -1 means complete rounding (circle/oval)\n
     check_color = rgb(204, 136, 34)\n
     fail_color = rgb(204, 34, 34) # if authentication failed, changes outer_color and fail message color\n
-    fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i> # can be set to empty\n
+    fail_text = <i>\$FAIL <b>(\$ATTEMPTS)</b></i> # can be set to empty\n
     fail_timeout = 2000 # milliseconds before fail_text and fail_color disappears\n
     fail_transition = 300 # transition time in ms between normal outer_color and fail_color\n
     capslock_color = -1\n
@@ -110,6 +110,22 @@ input-field {\n
     position = 0, -20\n
     halign = center\n
     valign = center\n
+}\n
+\n 
+label {\n
+    monitor =\n
+    text = Godzina \$TIME\n
+    text_align = center\n
+    color = $(get_color_in_rgba 12)\n
+    font_size = 25\n
+    font_family = Noto Sans\n
+    rotate = 0 # degrees, counter-clockwise\n
+\n
+    position = 0, 80\n
+    halign = center\n
+    valign = center\n
+    shadow_passes = 1\n
+    shadow_color = $(get_color_in_rgba 8)
 }\n
 "
 
