@@ -1,13 +1,13 @@
-#custom-spotify {
+#custom-browser {
   padding: 0 10px;
   margin: 0 4px;
-  background-color: #1db954;
+  background-color: #ff1000;
   color: black;
   border-radius: 15px;
-  transition: 0.5s all ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
-#custom-spotify:hover {
+#custom-browser:hover {
   background-color: @color15;
   color: @background;
   border-radius: 0;
