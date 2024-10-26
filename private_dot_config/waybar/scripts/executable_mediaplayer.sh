@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 if [ -z "$1" ]; then
   echo "Użycie: $0 <nazwa_odtwarzacza>"
   exit 1
