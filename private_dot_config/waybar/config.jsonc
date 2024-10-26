@@ -1,8 +1,8 @@
 {
   "layer": "top",
   "spacing": 1,
-  "margin": "2 2 2 2",
-  "modules-left": ["clock", "battery", "custom/spotify"],
+  "margin": "2 2 0 2",
+  "modules-left": ["clock", "battery", "custom/browser", "custom/spotify"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "pulseaudio",
@@ -107,13 +107,22 @@
     },
   },
   "custom/spotify": {
-    "exec": "~/.config/waybar/scripts/spotify.sh",
-    "format": "{}  ",
-    "return-type": "text",
+    "exec": "~/.config/waybar/scripts/mediaplayer.sh spotify",
+    "format": "{} ",
+    "return-type": "json",
     "on-click": "playerctl play-pause --player spotify",
     "on-click-right": "killall spotify",
     "on-scroll-up": "playerctl next --player spotify",
     "on-scroll-down": "playerctl previous --player spotify",
     "restart-interval": "0",
+    "hide-empty-text": true,
+  },
+  "custom/browser": {
+    "exec": "~/.config/waybar/scripts/mediaplayer.sh brave",
+    "format": "{} ",
+    "return-type": "json",
+    "on-click": "playerctl play-pause --player brave",
+    "restart-interval": "0",
+    "hide-empty-text": true,
   },
 }
