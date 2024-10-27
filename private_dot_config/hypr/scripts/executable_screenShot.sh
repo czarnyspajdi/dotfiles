@@ -75,7 +75,9 @@ color)
   grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') "$tmp_path" && feh --fullscreen "$tmp_path" &
   sleep 0.5
   feh_pid=$(pgrep feh)
-  color_hex=$(grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | sed -n '2p' | awk '{print $3}')
+  position=$(slurp -p)
+  sleep 1.0
+  color_hex=$(grim -g "$position" -t ppm - | magick convert - -format '%[pixel:p{0,0}]' txt:- | sed -n '2p' | awk '{print $3}')
   wl-copy $color_hex
   notify-send "Color picker" "Copied $color_hex to clipboard"
   kill -9 "$feh_pid"
