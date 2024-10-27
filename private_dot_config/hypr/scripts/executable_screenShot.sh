@@ -4,7 +4,7 @@ dir_path="$HOME/Obrazy/zrzuty/"
 file_name="zrzut_$(date +'%H-%M-%S_%d-%m-%Y').png"
 
 error_message="No argument provided. Use -h or --help for help message."
-help_message="\nUsage: screenShot [flags] [type-of-screen-shot]\n\nFlags:\n\t-c | --copy \t Copies to clipboard\n\t-s | --save \t Saves to $dir_path\n\t-e | --edit \t Edit screenshot with swappy\n\nTypes:\n\tfullscreen\n\twindow\n\tregion\n"
+help_message="\nUsage: screenShot [flags] [type-of-screen-shot / color (for color picker)\n\nFlags:\n\t-c | --copy \t Copies to clipboard\n\t-s | --save \t Saves to $dir_path\n\t-e | --edit \t Edit screenshot with swappy\n\nTypes:\n\tfullscreen\n\twindow\n\tregion\n"
 
 if [[ ! -d $dir_path ]]; then
   mkdir -p $dir_path
@@ -32,7 +32,7 @@ while [[ $# -gt 0 ]]; do
     echo -e "$help_message"
     exit 0
     ;;
-  fullscreen | window | region)
+  fullscreen | window | region | color)
     type_of_screenshot="$1"
     ;;
   *)
@@ -65,27 +65,43 @@ window)
   ;;
 region)
   grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') "$tmp_path" && feh --fullscreen "$tmp_path" &
-  sleep 0.3
+  sleep 0.5
   feh_pid=$(pgrep feh)
   grim -g "$(slurp)" "$tmp_path"
   echo "Killing feh…"
   kill -9 "$feh_pid"
   ;;
+color)
+  grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') "$tmp_path" && feh --fullscreen "$tmp_path" &
+  sleep 0.5
+  feh_pid=$(pgrep feh)
+  color_hex=$(grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | sed -n '2p' | awk '{print $3}')
+  wl-copy $color_hex
+  notify-send "Color picker" "Copied $color_hex to clipboard"
+  kill -9 "$feh_pid"
+  exit 0
+  ;;
+
 esac
 
-if [ "$copy" = true ] && [ "$save" = true ]; then
+case true in
+"$copy$save")
   cp "$tmp_path" "$full_path"
   wl-copy <"$tmp_path"
   notify-send -i "$tmp_path" "Screenshot" "Copied and saved to $full_path"
-elif [ "$edit" = true ]; then
+  ;;
+"$edit")
   swappy -f "$tmp_path"
-elif [ "$save" = true ]; then
+  ;;
+"$save")
   cp "$tmp_path" "$full_path"
   notify-send -i "$tmp_path" "Screenshot" "Saved screenshot to $full_path"
-elif [ "$copy" = true ]; then
+  ;;
+"$copy")
   wl-copy <"$tmp_path"
   notify-send -i "$tmp_path" "Screenshot" "Copied screenshot"
-fi
+  ;;
+esac
 
 rm $tmp_path
 
