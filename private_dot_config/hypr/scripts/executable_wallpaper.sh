@@ -57,6 +57,11 @@ get_color_in_rgba() {
 
 choosen_wallpaper=$(find $wallpaper_dir -type f | rofi -dmenu -i -p "Wybierz tapetę")
 
+if [[ -z $choosen_wallpaper]];then
+  echo "Proszę wybrać tapetę"
+  exit 1
+fi
+
 hyprpaper_content="
 preload = $choosen_wallpaper\n
 wallpaper = ,$choosen_wallpaper\n
