@@ -1,0 +1,47 @@
+* {
+    border: 0px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+window {
+    anchor: center;
+    location: center;
+    width: 50%;
+    height: 80%;
+    border-radius: 10px;
+}
+
+entry {
+    placeholder: "Wpisz tutaj...";
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    cursor-width: 8px;
+}
+
+element {
+    orientation: horizontal;
+    children: [element-icon, element-text];
+    spacing: 5px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+element-icon {
+    size: 2.5em;
+    padding: 2px;
+    margin: 3px;
+}
+
+element-text {
+    vertical-align: 0.5;
+    font: "DejaVu Sans Bold 12";
+}
+
+button {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
