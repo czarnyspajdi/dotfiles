@@ -86,22 +86,24 @@ color)
 
 esac
 
-case true in
-"$copy$save")
+case "$copy-$save" in
+"true-true")
   cp "$tmp_path" "$full_path"
   wl-copy <"$tmp_path"
   notify-send -i "$tmp_path" "Screenshot" "Copied and saved to $full_path"
   ;;
-"$edit")
-  swappy -f "$tmp_path"
-  ;;
-"$save")
+"false-true")
   cp "$tmp_path" "$full_path"
   notify-send -i "$tmp_path" "Screenshot" "Saved screenshot to $full_path"
   ;;
-"$copy")
+"true-false")
   wl-copy <"$tmp_path"
   notify-send -i "$tmp_path" "Screenshot" "Copied screenshot"
+  ;;
+"false-false")
+  if [ "$edit" = "true" ]; then
+    swappy -f "$tmp_path"
+  fi
   ;;
 esac
 
