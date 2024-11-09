@@ -1,0 +1,11 @@
+#custom-update {
+  background-color: @color1;
+  color: @background;
+  border-radius: 15px;
+  transition: all 0.5s ease-in-out;
+  padding: 5px;
+}
+
+#custom-update:hover {
+  background-color: @color14;
+}

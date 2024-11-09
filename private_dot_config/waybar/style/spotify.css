@@ -5,6 +5,7 @@
   color: black;
   border-radius: 15px;
   transition: 0.5s all ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Jasna ramka */
 }
 
 #custom-spotify:hover {

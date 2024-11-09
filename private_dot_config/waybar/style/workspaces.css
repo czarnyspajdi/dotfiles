@@ -5,24 +5,37 @@
 }
 
 #workspaces button {
-  padding: 0 5px;
-  background-color: transparent;
+  padding: 5px;
+  border-radius: 10px;
   color: #ffffff;
 }
 
 #workspaces button:hover {
-  border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.2);
+  background: inherit;
+  animation: wysuniecie 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 #workspaces button.active {
+  border-radius: 10px;
+  animation: skupsie 2s 1;
+  animation-fill-mode: forwards;
+}
+
+#workspaces button.active:hover {
+  animation: wysuniecie 1s 1;
   background-color: @color5;
-  border-radius: 15px;
+  border-radius: 10px;
+  animation-fill-mode: forwards;
+  color: @background;
 }
 
 #workspaces button.urgent {
-  background-color: @color10;
+  background-color: rgb(255, 0, 0);
   border-radius: 15px;
+  animation: miganie 5s infinite;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -33,4 +46,49 @@
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
   margin-right: 0;
+}
+
+@keyframes miganie {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes wysuniecie {
+  0% {
+    border-radius: 10;
+    box-shadow: inset 0 -1px #ffffff;
+  }
+  25% {
+    border-radius: 15;
+    box-shadow: inset 0 -2px #ffffff;
+  }
+  50% {
+    border-radius: 20;
+    box-shadow: inset 0 -3px #ffffff;
+  }
+  75% {
+    border-radius: 25px;
+    box-shadow: inset 0 -4px #ffffff;
+  }
+  100% {
+    border-radius: 30px;
+    box-shadow: inset 0 -5px #ffffff;
+  }
+}
+
+@keyframes skupsie {
+  0% {
+    color: #ffffff;
+  }
+  100% {
+    background-color: @color5;
+    color: @background;
+  }
 }

@@ -2,7 +2,7 @@
   background-color: @color12; /* Lekki pomarańczowy odcień z przezroczystością */
   border-radius: 10px;
   padding: 5px;
-  color: #ffffff; /* Biały kolor ikon i tekstu */
+  color: @background; /* Biały kolor ikon i tekstu */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
   transition:
     background-color 0.3s ease,

@@ -5,6 +5,7 @@
   "modules-left": ["clock", "battery", "custom/browser", "custom/spotify"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
+    "custom/update",
     "pulseaudio",
     "backlight",
     "network",
@@ -91,8 +92,8 @@
   },
   "custom/notifications": {
     "format": " ",
-    "on-click": "~/.config/waybar/scripts/showNotifications.sh",
-    "on-click-right": "~/.config/waybar/scripts/makoTurn.sh",
+    "on-click": "~/.local/bin/showNotifications.sh",
+    "on-click-right": "~/.local/bin/makoTurn.sh",
     "return-type": "text",
     "interval": 10,
   },
@@ -100,7 +101,7 @@
     "format": "⏻ ",
     "tooltip": false,
     "menu": "on-click",
-    "menu-file": "~/.config/waybar/scripts/powerMenu.xml",
+    "menu-file": "~/.config/waybar/powerMenu.xml",
     "menu-actions": {
       "shutdown": "systemctl poweroff",
       "reboot": "reboot",
@@ -109,7 +110,7 @@
     },
   },
   "custom/spotify": {
-    "exec": "~/.config/waybar/scripts/mediaplayer.sh spotify",
+    "exec": "~/.local/bin/mediaplayer.sh spotify",
     "format": "{} ",
     "return-type": "json",
     "on-click": "playerctl play-pause --player spotify",
@@ -121,12 +122,22 @@
     "justify": "center",
   },
   "custom/browser": {
-    "exec": "~/.config/waybar/scripts/mediaplayer.sh brave",
+    "exec": "~/.local/bin/mediaplayer.sh brave",
     "format": "{} ",
     "return-type": "json",
     "on-click": "playerctl play-pause --player brave",
     "restart-interval": "0",
     "hide-empty-text": true,
     "justify": "center",
+  },
+  "custom/update": {
+    "exec-on-event": true,
+    "format": " {} ",
+    "return-type": "json",
+    "on-click": "~/.local/bin/pacman.sh update",
+    "justify": "center",
+    "restart-interval": "0",
+    "hide-empty-text": true,
+    "interval": "3600",
   },
 }

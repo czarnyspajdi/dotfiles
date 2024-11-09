@@ -9,6 +9,7 @@
 @import url("./style/menu.css");
 @import url("./style/spotify.css");
 @import url("./style/browser.css");
+@import url("./style/update.css");
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
@@ -46,20 +47,6 @@ window#waybar.termite {
 window#waybar.chromium {
   background-color: #000000;
   border: none;
-}
-
-button {
-  /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each button name */
-  border: none;
-  border-radius: 25px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-  background: inherit;
-  box-shadow: inset 0 -3px #ffffff;
 }
 
 #mode {
