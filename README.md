@@ -1,5 +1,7 @@
 # Moje super duper najlepsze pliki konfiguracyjne
 
+- Chciałbym w tym miejscu pozdrowić Mamę i zadeklarować, że lubię kebaba.
+
 ## pingwinek
 
        .--.
