@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# Flagi do wyświetlania odpowiednich informacji
 show_todo=false
 show_appointment=false
 
-help_mess="Usage: \nArg [todo] to show todo items\nArg [week] to show this week appointments"
+# Wiadomość pomocy
+help_mess="Usage: \nArg [todo] to show todo items\nArg [appointment] to show this appointment's appointments"
 
 # Przetwarzanie argumentów
 for arg in "$@"; do
@@ -15,35 +17,32 @@ for arg in "$@"; do
     show_appointment=true
     ;;
   *)
-    zenity --error --text="$help_mess"
+    echo -e "$help_mess"
     exit 1
     ;;
   esac
 done
 
-# Pobranie odpowiednich danych z calcurse na podstawie argumentów
+# Pobranie odpowiednich danych z calcurse i formatowanie
 output=""
 
-if [[ $show_todo == true && $show_appointment == true ]]; then
-  output+="==== TO DO LIST ====\n"
-  output+="$(calcurse -Q)\n\n"
-  output+="==== APPOINTMENTS (NEXT 7 DAYS) ====\n"
-  output+="$(calcurse -a --days 7)"
-elif [[ $show_todo == true ]]; then
-  output+="==== TO DO LIST ====\n"
-  output+="$(calcurse -Q)"
-elif [[ $show_appointment == true ]]; then
-  output+="==== APPOINTMENTS (NEXT 7 DAYS) ====\n"
-  output+="$(calcurse -a --days 7)"
-else
-  zenity --error --text="$help_mess"
-  exit 1
+if $show_todo && $show_appointment; then
+  # Wyświetl oba (zadania i wydarzenia na tydzień)
+  output+="==== APPOINTMENTS (NEXT 7 DAYS) ====\n\n"
+  output+=$(calcurse -a --days 7 | sed 's/^/  /') # dodaje wcięcia dla czytelności
+  output+="\n\n==== TODO LIST ====\n\n"
+  output+=$(calcurse -Q | sed 's/^/  /') # dodaje wcięcia dla czytelności
+
+elif $show_todo; then
+  # Wyświetl tylko listę zadań
+  output+="==== TODO LIST ====\n\n"
+  output+=$(calcurse -Q | sed 's/^/  /') # dodaje wcięcia dla czytelności
+
+elif $show_appointment; then
+  # Wyświetl tylko wydarzenia z nadchodzącego tygodnia
+  output+="==== APPOINTMENTS (NEXT 7 DAYS) ====\n\n"
+  output+=$(calcurse -a --days 7 | sed 's/^/  /') # dodaje wcięcia dla czytelności
 fi
 
-# Sprawdzenie, czy output jest pusty - jeśli tak, wyświetl wiadomość, że brak danych
-if [ -z "$output" ]; then
-  output="Brak danych do wyświetlenia."
-fi
-
-# Wyświetlenie wyników w zenity jako jedno okno
-echo -e "$output" | zenity --text-info --width=600 --height=400 --title="Calcurse"
+# Wyświetlanie wyników za pomocą Zenity
+zenity --info --title="Calcurse" --text="$output" --width=500 --height=400
