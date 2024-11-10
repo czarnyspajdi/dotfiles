@@ -1,0 +1,49 @@
+#!/bin/bash
+
+show_todo=false
+show_appointment=false
+
+help_mess="Usage: \nArg [todo] to show todo items\nArg [week] to show this week appointments"
+
+# Przetwarzanie argumentów
+for arg in "$@"; do
+  case $arg in
+  todo)
+    show_todo=true
+    ;;
+  appointment)
+    show_appointment=true
+    ;;
+  *)
+    zenity --error --text="$help_mess"
+    exit 1
+    ;;
+  esac
+done
+
+# Pobranie odpowiednich danych z calcurse na podstawie argumentów
+output=""
+
+if [[ $show_todo == true && $show_appointment == true ]]; then
+  output+="==== TO DO LIST ====\n"
+  output+="$(calcurse -Q)\n\n"
+  output+="==== APPOINTMENTS (NEXT 7 DAYS) ====\n"
+  output+="$(calcurse -a --days 7)"
+elif [[ $show_todo == true ]]; then
+  output+="==== TO DO LIST ====\n"
+  output+="$(calcurse -Q)"
+elif [[ $show_appointment == true ]]; then
+  output+="==== APPOINTMENTS (NEXT 7 DAYS) ====\n"
+  output+="$(calcurse -a --days 7)"
+else
+  zenity --error --text="$help_mess"
+  exit 1
+fi
+
+# Sprawdzenie, czy output jest pusty - jeśli tak, wyświetl wiadomość, że brak danych
+if [ -z "$output" ]; then
+  output="Brak danych do wyświetlenia."
+fi
+
+# Wyświetlenie wyników w zenity jako jedno okno
+echo -e "$output" | zenity --text-info --width=600 --height=400 --title="Calcurse"
