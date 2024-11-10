@@ -23,5 +23,5 @@ if [ -z "$NOTIFICATIONS" ]; then
   exit 1
 fi
 
-# Wyświetl powiadomienia w oknie `rofi`
-echo "$NOTIFICATIONS" | rofi -dmenu -p "Powiadomienia"
+# Przygotowanie do wyświetlenia powiadomień w rofi z ikonkami
+echo "$NOTIFICATIONS" | rofi -dmenu -p "Powiadomienia" -show-icons -theme-str 'listview { lines: 15; }' -format i
