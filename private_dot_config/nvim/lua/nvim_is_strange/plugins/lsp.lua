@@ -15,10 +15,10 @@ return {
     config = function()
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
-        "force",
-        {},
-        vim.lsp.protocol.make_client_capabilities(),
-        cmp_lsp.default_capabilities()
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_lsp.default_capabilities()
         )
 
         require("fidget").setup({})
@@ -67,18 +67,50 @@ return {
                 { name = 'path' },
                 { name = "nvim_lsp" },
                 { name = "luasnip", keyword_lenght = 2 },
-                { name = "buffer", keyword_lenght = 3 },
+                { name = "buffer",  keyword_lenght = 3 },
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<leader>c'] = vim.lsp.buf.code_action(),
             }),
             snippets = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body)
                 end,
             },
+        })
+
+        -- autoformat --
+        local buffer_autoformat = function(bufnr)
+            local group = 'lsp_autoformat'
+            vim.api.nvim_create_augroup(group, { clear = false })
+            vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                buffer = bufnr,
+                group = group,
+                desc = "LSP format on save",
+                callback = function()
+                    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+                end
+            })
+        end
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            callback = function(event)
+                local id = vim.tbl_get(event, 'data', 'client_id')
+                local client = id and vim.lsp.get_client_by_id(id)
+
+                if client == nil then
+                    return
+                end
+
+                if client.supports_method('textDocument/formatting') then
+                    buffer_autoformat(event.buf)
+                end
+            end
         })
     end
 }
