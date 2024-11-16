@@ -11,6 +11,8 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "numToStr/Comment.nvim",
+        "lukas-reineke/indent-blankline.nvim",
     },
     config = function()
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -26,7 +28,8 @@ return {
 
         require('mason-lspconfig').setup({
             ensure_installed = {
-                "lua_ls"
+                "lua_ls",
+                "intelephense"
             },
             handlers = {
                 function(server_name)
@@ -112,5 +115,14 @@ return {
                 end
             end
         })
+
+        require("Comment").setup({
+            opleader = {
+                line = '<leader>cl',
+                block = '<leader>cb',
+            }
+        })
+
+        require("ibl").setup()
     end
 }
