@@ -39,3 +39,7 @@ vim.opt.hlsearch = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = false
 vim.opt.updatetime = 50
+
+-- Język --
+vim.opt.spell = true
+vim.opt.spelllang = { 'pl', 'en' }
