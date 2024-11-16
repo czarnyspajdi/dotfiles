@@ -33,7 +33,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "intelephense",
-                "tsserver",
+                "ts_ls",
                 "emmet_language_server",
             },
             handlers = { -- config lsp
