@@ -68,7 +68,7 @@ return {
                         filetypes = {
                             "html",
                             "css",
-                            "javascript",
+                            "js",
                             "php",
                         }
                     })
@@ -93,13 +93,32 @@ return {
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ['<leader>c'] = vim.lsp.buf.code_action(),
             }),
             snippets = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body)
                 end,
             },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
+            formatting = {
+                fields = { 'menu', 'abbr', 'kind' },
+
+                format = function(entry, item)
+                    local menu_icon = {
+                        nvim_lsp = 'λ',
+                        luasnip = '⋗',
+                        buffer = 'Ω',
+                        path = '🖫',
+                        nvim_lua = 'Π',
+                    }
+
+                    item.menu = menu_icon[entry.source.name]
+                    return item
+                end,
+            }
         })
 
         -- autoformat --
@@ -134,6 +153,9 @@ return {
         })
 
         require("Comment").setup({
+            mappings = {
+                basic = true
+            },
             opleader = {
                 line = '<leader>cl',
                 block = '<leader>cb',
