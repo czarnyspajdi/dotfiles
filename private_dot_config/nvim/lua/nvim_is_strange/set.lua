@@ -24,5 +24,5 @@ vim.opt.hlsearch = false
 
 -- Ogólne ustawienia
 vim.opt.clipboard = "unnamedplus"
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.updatetime = 50

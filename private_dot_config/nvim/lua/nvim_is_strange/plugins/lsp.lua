@@ -13,6 +13,9 @@ return {
         "j-hui/fidget.nvim",
         "numToStr/Comment.nvim",
         "lukas-reineke/indent-blankline.nvim",
+        "kylechui/nvim-surround",
+        'm4xshen/autoclose.nvim',
+        "gbprod/phpactor.nvim",
     },
     config = function()
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -29,9 +32,11 @@ return {
         require('mason-lspconfig').setup({
             ensure_installed = {
                 "lua_ls",
-                "intelephense"
+                "intelephense",
+                "tsserver",
+                "emmet_language_server",
             },
-            handlers = {
+            handlers = { -- config lsp
                 function(server_name)
                     require("lspconfig")[server_name].setup({
                         capabilities = capabilities,
@@ -56,7 +61,19 @@ return {
                             }
                         }
                     })
-                end
+                end,
+
+                emmet_language_server = function()
+                    require("lspconfig").emmet_language_server.setup({
+                        filetypes = {
+                            "html",
+                            "css",
+                            "javascript",
+                            "php",
+                        }
+                    })
+                end,
+
             }
         })
 
@@ -124,5 +141,8 @@ return {
         })
 
         require("ibl").setup()
+
+        require("nvim-surround").setup()
+        require("autoclose").setup()
     end
 }
