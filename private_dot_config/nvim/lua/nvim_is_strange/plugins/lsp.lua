@@ -16,6 +16,7 @@ return {
         "kylechui/nvim-surround",
         'm4xshen/autoclose.nvim',
         "gbprod/phpactor.nvim",
+        "RRethy/vim-illuminate",
     },
     config = function()
         local cmp_lsp = require("cmp_nvim_lsp")
