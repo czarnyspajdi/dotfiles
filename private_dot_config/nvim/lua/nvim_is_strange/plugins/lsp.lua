@@ -36,6 +36,7 @@ return {
                 "intelephense",
                 "ts_ls",
                 "emmet_language_server",
+                "marksman",
             },
             handlers = { -- config lsp
                 function(server_name)
@@ -74,6 +75,14 @@ return {
                         }
                     })
                 end,
+
+                marksman = function()
+                    require("lspconfig").marksman.setup({
+                        filetypes = {
+                            "markdown",
+                        }
+                    })
+                end
 
             }
         })
