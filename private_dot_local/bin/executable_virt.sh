@@ -3,31 +3,26 @@
 ISO_PATH="$HOME/.qemu/windows10.iso"
 DISK_PATH="$HOME/.qemu/windows10.qcow2"
 DISK_SIZE="60G"
-MEMORY="12G"
-CPU="12"
+MEMORY="$(($(grep MemTotal /proc/meminfo | awk '{print $2}') / 2048))"
+CPU="$((($(nproc) + 1) / 2))"
 VM_NAME="windows10"
 
-# Funkcja do wyłączania wszystkich uruchomionych maszyn wirtualnych
+# Funkcja wyłączania uruchomionych maszyn wirtualnych
 shutdown_vms() {
-  echo "Wyłączam wszystkie uruchomione maszyny wirtualne..."
-  notify-send "Maszyna wirtualna" "Wyłączam…"
-  # Znajdowanie i zabijanie wszystkich procesów qemu-system-x86_64
-  pgrep -f qemu-system-x86_64 | xargs -r kill
-  exit 0 # Kończymy działanie skryptu
+  notify-send "Maszyna wirtualna" "Wyłączanie wszystkich maszyn..."
+  pkill -SIGTERM -f qemu-system-x86_64 || echo "Brak uruchomionych maszyn."
+  exit 0
 }
 
-# Sprawdzenie, czy jakakolwiek maszyna wirtualna jest uruchomiona
+# Sprawdzenie uruchomionych maszyn
 if pgrep -f qemu-system-x86_64 >/dev/null; then
   shutdown_vms
 fi
 
-# Sprawdzenie, czy VM o nazwie windows10 już istnieje
+# Uruchomienie istniejącej maszyny
 if [ -f "$DISK_PATH" ]; then
-  echo "Maszyna wirtualna $VM_NAME już istnieje. Uruchamiam..."
-
-  # Uruchamianie istniejącej maszyny
-  notify-send "Maszyna wirtualna" "Uruchamianie…"
-  qemu-system-x86_64 \
+  notify-send "Maszyna wirtualna" "Uruchamianie $VM_NAME..."
+  exec qemu-system-x86_64 \
     -name "$VM_NAME" \
     -m "$MEMORY" \
     -smp "$CPU" \
@@ -38,45 +33,33 @@ if [ -f "$DISK_PATH" ]; then
     -display sdl,gl=on \
     -enable-kvm \
     -cpu host \
-    -display default,show-cursor=off \
     -device ich9-intel-hda -device hda-duplex
-
-else
-  echo "Maszyna wirtualna $VM_NAME nie istnieje. Tworzę nową..."
-  notify-send "Maszyna wirtualna nie istnieje" "Tworzenie nowej…"
-
-  # Tworzenie katalogu na dysk i ISO
-  mkdir -p "$HOME/.qemu"
-
-  # Sprawdzenie, czy ISO istnieje
-  if [ ! -f "$ISO_PATH" ]; then
-    echo "Brak pliku ISO. Otwieram stronę do pobrania Windows 10 w przeglądarce."
-    notify-send "Maszyna wirtualna" "Proszę pobrać plik iso i zapisać go jako ~/.qemu/windows10.iso"
-    xdg-open "https://www.microsoft.com/pl-pl/software-download/windows10" # Otwiera stronę pobierania
-    exit 1                                                                 # Kończymy działanie skryptu, gdy ISO nie istnieje
-  else
-    echo "ISO Windows 10 już istnieje."
-  fi
-
-  # Tworzenie dynamicznego dysku w formacie qcow2
-  echo "Tworzę dysk wirtualny o rozmiarze $DISK_SIZE..."
-  qemu-img create -f qcow2 "$DISK_PATH" "$DISK_SIZE"
-
-  # Tworzenie i uruchamianie maszyny wirtualnej po raz pierwszy z instalacją
-  echo "Tworzę i uruchamiam maszynę wirtualną $VM_NAME po raz pierwszy..."
-
-  qemu-system-x86_64 \
-    -name "$VM_NAME" \
-    -m "$MEMORY" \
-    -smp "$CPU" \
-    -hda "$DISK_PATH" \
-    -cdrom "$ISO_PATH" \
-    -boot order=d \
-    -device virtio-net,netdev=net0 \
-    -netdev user,id=net0 \
-    -vga virtio \
-    -enable-kvm \
-    -cpu host \
-    -display default,show-cursor=on \
-    -soundhw hda
 fi
+
+# Tworzenie maszyny, jeśli nie istnieje
+mkdir -p "$HOME/.qemu"
+
+if [ ! -f "$ISO_PATH" ]; then
+  notify-send "Maszyna wirtualna" "Pobierz ISO Windows 10 i zapisz jako $ISO_PATH"
+  xdg-open "https://www.microsoft.com/pl-pl/software-download/windows10"
+  exit 1
+fi
+
+notify-send "Maszyna wirtualna" "Tworzenie dysku $DISK_SIZE dla $VM_NAME..."
+qemu-img create -f qcow2 "$DISK_PATH" "$DISK_SIZE"
+
+notify-send "Maszyna wirtualna" "Uruchamianie instalatora Windows..."
+exec qemu-system-x86_64 \
+  -name "$VM_NAME" \
+  -m "$MEMORY" \
+  -smp "$CPU" \
+  -hda "$DISK_PATH" \
+  -cdrom "$ISO_PATH" \
+  -boot order=d \
+  -device virtio-net,netdev=net0 \
+  -netdev user,id=net0 \
+  -vga virtio \
+  -enable-kvm \
+  -cpu host \
+  -soundhw hda \
+  -display sdl,gl=on
