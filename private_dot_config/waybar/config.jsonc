@@ -96,7 +96,7 @@
     "on-click": "~/.local/bin/showNotifications.sh",
     "on-click-right": "~/.local/bin/mute_notifications.sh toggle",
     "return-type": "text",
-    "interval": "1",
+    "restart-interval": "2",
   },
   "custom/power": {
     "format": "⏻ ",

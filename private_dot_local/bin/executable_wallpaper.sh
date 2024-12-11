@@ -201,6 +201,10 @@ height=400\n
 \n
 # Timeout settings\n
 default-timeout=8000\n
+
+[mode=do-not-disturb]\n
+invisible=1\n
+on-notify=none\n
 "
 
 cp "$wal_dir/colors-waybar.css" "$waybar_dir/style/var.css"
