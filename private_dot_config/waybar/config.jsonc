@@ -91,9 +91,10 @@
     "format-icons": [" ", " "],
   },
   "custom/notifications": {
-    "format": " ",
+    "format": "{} ",
+    "exec": "~/.local/bin/mute_notifications.sh",
     "on-click": "~/.local/bin/showNotifications.sh",
-    "on-click-right": "~/.local/bin/makoTurn.sh",
+    "on-click-right": "~/.local/bin/mute_notifications.sh toggle",
     "return-type": "text",
     "interval": 10,
   },
