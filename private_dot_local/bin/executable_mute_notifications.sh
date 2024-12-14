@@ -10,6 +10,7 @@ if [[ $1 == "toggle" ]]; then
         makoctl mode -r do-not-disturb >/dev/null 2>&1
         echo " "
     fi
+    pkill -SIGRTMIN+1 -x waybar
 else
     if [[ $is_muted -eq 0 ]]; then
         echo " "

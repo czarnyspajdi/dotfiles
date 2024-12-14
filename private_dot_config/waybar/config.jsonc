@@ -93,10 +93,11 @@
   "custom/notifications": {
     "format": "{} ",
     "exec": "~/.local/bin/mute_notifications.sh",
+    "exec-on-event": "true",
     "on-click": "~/.local/bin/showNotifications.sh",
     "on-click-right": "~/.local/bin/mute_notifications.sh toggle",
     "return-type": "text",
-    "restart-interval": "2",
+    "signal": 1
   },
   "custom/power": {
     "format": "⏻ ",
