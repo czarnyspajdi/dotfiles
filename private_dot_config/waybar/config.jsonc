@@ -124,7 +124,7 @@
     "justify": "center",
   },
   "custom/browser": {
-    "exec": "~/.local/bin/mediaplayer.sh brave",
+    "exec": "~/.local/bin/mediaplayer.sh firefox",
     "format": "{} ",
     "return-type": "json",
     "on-click": "playerctl play-pause --player brave",
