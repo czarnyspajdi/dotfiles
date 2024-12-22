@@ -1,94 +1,101 @@
 #workspaces {
-  background-color: rgba(253, 248, 218, 0.2);
-  border-radius: 25px;
-  margin: 0 4px;
+    background-color: rgba(253, 248, 218, 0.2);
+    border-radius: 25px;
+    margin: 0 4px;
 }
 
 #workspaces button {
-  padding: 5px;
-  border-radius: 10px;
-  color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    color: #ffffff;
 }
 
 #workspaces button:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-  background: inherit;
-  animation: wysuniecie 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+    background-color: rgba(0, 0, 0, 0.2);
+    background: inherit;
+    animation: wysuniecie 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 #workspaces button.active {
-  border-radius: 10px;
-  animation: skupsie 2s 1;
-  animation-fill-mode: forwards;
+    border-radius: 10px;
+    animation: skupsie 2s 1;
+    animation-fill-mode: forwards;
 }
 
 #workspaces button.active:hover {
-  animation: wysuniecie 1s 1;
-  background-color: @color5;
-  border-radius: 10px;
-  animation-fill-mode: forwards;
-  color: @background;
+    animation: wysuniecie 1s 1;
+    background-color: @color5;
+    border-radius: 10px;
+    animation-fill-mode: forwards;
+    color: @background;
 }
 
 #workspaces button.urgent {
-  background-color: rgb(255, 0, 0);
-  border-radius: 15px;
-  animation: miganie 5s infinite;
+    background-color: rgb(255, 0, 0);
+    border-radius: 15px;
+    animation: miganie 5s infinite;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
+.modules-left>widget:first-child>#workspaces {
+    margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
+.modules-right>widget:last-child>#workspaces {
+    margin-right: 0;
 }
 
 @keyframes miganie {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes wysuniecie {
-  0% {
-    border-radius: 10;
-    box-shadow: inset 0 -1px #ffffff;
-  }
-  25% {
-    border-radius: 15;
-    box-shadow: inset 0 -2px #ffffff;
-  }
-  50% {
-    border-radius: 20;
-    box-shadow: inset 0 -3px #ffffff;
-  }
-  75% {
-    border-radius: 25px;
-    box-shadow: inset 0 -4px #ffffff;
-  }
-  100% {
-    border-radius: 30px;
-    box-shadow: inset 0 -5px #ffffff;
-  }
+    0% {
+        border-radius: 10;
+        box-shadow: inset 0 -1px #ffffff;
+    }
+
+    25% {
+        border-radius: 15;
+        box-shadow: inset 0 -2px #ffffff;
+    }
+
+    50% {
+        border-radius: 20;
+        box-shadow: inset 0 -3px #ffffff;
+    }
+
+    75% {
+        border-radius: 25px;
+        box-shadow: inset 0 -4px #ffffff;
+    }
+
+    100% {
+        border-radius: 30px;
+        box-shadow: inset 0 -5px #ffffff;
+    }
 }
 
 @keyframes skupsie {
-  0% {
-    color: #ffffff;
-  }
-  100% {
-    background-color: @color5;
-    color: @background;
-  }
+    0% {
+        color: #ffffff;
+    }
+
+    100% {
+        background-color: @color5;
+        color: @background;
+    }
 }
