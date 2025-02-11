@@ -1,3 +1,3 @@
 #!/bin/sh
 
-~/.config/hypr/scripts/wallpaper.sh
+~/.local/bin/wallpaper.sh
