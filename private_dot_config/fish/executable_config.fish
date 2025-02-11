@@ -6,6 +6,6 @@ if status is-interactive
     export VISUAL=nvim
     gh auth setup-git
     zoxide init fish | source
-    eval "$(atuin init fish)"
+    atuin init fish | source
     echo ""
 end
