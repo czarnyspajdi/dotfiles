@@ -2,6 +2,7 @@
   "layer": "top",
   "spacing": 1,
   "margin": "2 2 0 2",
+  "output": "DP-1",
   "modules-left": ["clock", "battery", "custom/browser", "custom/spotify"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
@@ -127,7 +128,7 @@
     "exec": "~/.local/bin/mediaplayer.sh firefox",
     "format": "{} ",
     "return-type": "json",
-    "on-click": "playerctl play-pause --player brave",
+    "on-click": "playerctl play-pause --player firefox.instance_1_279",
     "restart-interval": "0",
     "hide-empty-text": true,
     "justify": "center",
