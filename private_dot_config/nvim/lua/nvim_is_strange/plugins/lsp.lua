@@ -37,6 +37,7 @@ return {
                 "ts_ls",
                 "emmet_language_server",
                 "marksman",
+                "arduino_language_server",
             },
             handlers = { -- config lsp
                 function(server_name)
@@ -85,6 +86,7 @@ return {
                 end
 
             }
+
         })
 
         local cmp = require("cmp")
